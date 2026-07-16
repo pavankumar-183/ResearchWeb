@@ -1,6 +1,7 @@
 import gradio as gr
 from dotenv import load_dotenv
 from Research_Manager import ResearchManager
+import os
 
 load_dotenv(override=True)
 
@@ -163,4 +164,9 @@ with gr.Blocks(
             outputs=report
         )
 
-ui.launch(inbrowser=True)
+
+if __name__ == "__main__":
+    ui.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", 7860))
+    )
